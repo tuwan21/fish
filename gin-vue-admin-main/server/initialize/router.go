@@ -72,6 +72,11 @@ func Routers() *gin.Engine {
 		exampleRouter.InitFileUploadAndDownloadRouter(PrivateGroup) // 文件上传下载功能路由
 
 	}
+	{
+		fishRouter := router.RouterGroupApp.Fish
+		fishRouter.InitBannerRouter(PrivateGroup, PublicGroup)
+		fishRouter.InitWxRouter(PrivateGroup, PublicGroup)
+	}
 
 	global.GVA_LOG.Info("router register success")
 	return Router
